@@ -1,5 +1,18 @@
 const express = require('express');
 const app = express();
+const mongoose = require("mongoose");
+
+const connectDB = async () => {
+	try {
+		await mongoose.connect(`mongodb+srv://mern-learn:1234@mern-learn.dmjpofx.mongodb.net/mern-learn?retryWrites=true&w=majority`)
+		console.log('MongoDB connected')
+	} catch (error) {
+		console.log(error.message)
+		process.exit(1)
+	}
+}
+
+connectDB()
 
 app.get('/', (req, res) => res.send('Hello '));
 
